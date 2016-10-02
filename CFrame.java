@@ -14,7 +14,8 @@ public class CFrame implements WindowListener
 	String path;
 	JFrame frame=new JFrame();
 	JButton button[];
-	public CFrame(String loc) {
+	public CFrame(String loc) 	//a constructor that forms a frame of the path at string loc
+	{
 		// TODO Auto-generated constructor stub
 		path=loc;
 		frame.setLayout(null);
@@ -27,7 +28,8 @@ public class CFrame implements WindowListener
 	}
 	
 	
-	public CFrame() {
+	public CFrame() 	//a constructor that forms a frame of the root path
+	{
 		// TODO Auto-generated constructor stub
 		path="";
 		frame.setName(null);
@@ -38,7 +40,8 @@ public class CFrame implements WindowListener
 	}
 	
 	
-	private void createMainFrame() {
+	private void createMainFrame() 		//create the frame for root path
+	{
 		// TODO Auto-generated method stub
 		final File flist[]=File.listRoots();
 		button=new JButton[flist.length];
@@ -76,7 +79,7 @@ public class CFrame implements WindowListener
 	}
 
 
-	void createFrame(final File[] newList) 
+	void createFrame(final File[] newList) //create frame of thefile list given
 	{
 		addBackButton();
 		path=newList[0].getParent();
@@ -133,7 +136,8 @@ public class CFrame implements WindowListener
 	}
 
 
-	private void addBackButton() {
+	private void addBackButton() 	//ads back button
+	{
 		final JButton back=new JButton("BACK");
 		back.setBounds(30, 40, 80, 30);
 		
@@ -167,7 +171,8 @@ public class CFrame implements WindowListener
 	}
 
 
-	void removeComponent(String parent) {
+	void removeComponent(String parent) 	//removes component fron older frames
+	{
 		// TODO Auto-generated method stub
 		File temp=new File(parent);
 		//temp=new File(temp.getParent());
