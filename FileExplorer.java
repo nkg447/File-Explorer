@@ -1,7 +1,8 @@
 
 public class FileExplorer
 {
-	//Just a class for revoking functions
+	
+	String parent;
 	public static void main(String args[])
 	{
 		new CFrame();

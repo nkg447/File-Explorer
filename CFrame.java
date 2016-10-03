@@ -1,6 +1,8 @@
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -11,37 +13,98 @@ import javax.swing.*;
 
 public class CFrame implements WindowListener
 {
+	Runtime rt = Runtime.getRuntime();
 	String path;
 	JFrame frame=new JFrame();
 	JButton button[];
-	public CFrame(String loc) 	//a constructor that forms a frame of the path at string loc
-	{
+	public CFrame(String loc) {
 		// TODO Auto-generated constructor stub
 		path=loc;
+		frame.setName(path);
 		frame.setLayout(null);
 		frame.setSize(1500, 700);
 		frame.setName(path);
 		File flist[]=(new File(path)).listFiles();
 		button=new JButton[flist.length];
+		createMenuBar();
 		createFrame(flist);
 		frame.setVisible(true);
 	}
 	
 	
-	public CFrame() 	//a constructor that forms a frame of the root path
-	{
+	public CFrame() {
 		// TODO Auto-generated constructor stub
 		path="";
-		frame.setName(null);
+		frame.setName("This PC");
 		frame.setLayout(null);
 		frame.setSize(1500, 700);
+		createMenuBar();
+		
 		createMainFrame();
 		frame.setVisible(true);
 	}
 	
 	
-	private void createMainFrame() 		//create the frame for root path
+	private void createMenuBar() 
 	{
+		// TODO Auto-generated method stub
+		JMenuBar menubar=new JMenuBar();
+		menubar.setBounds(0, 0, 1500, 30);
+		JMenu file=new JMenu("File");
+		menubar.add(file);
+		JMenu view=new JMenu("View");
+		menubar.add(view);
+		
+		JMenuItem openInNew=new JMenuItem("Open in new Frame");
+		file.add(openInNew);
+		openInNew.addActionListener(new ActionListener()
+		{
+
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				// TODO Auto-generated method stub
+				new CFrame(path);
+			}
+		
+		});
+		
+		JMenuItem cmd=new JMenuItem("Open cmd here");
+		file.add(cmd);
+		cmd.addActionListener(new ActionListener()
+		{
+
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				// TODO Auto-generated method stub
+				try {
+					rt.exec("cmd.exe /c start", null, (new File(path)));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
+		});
+		
+		JMenuItem close=new JMenuItem("close");
+		file.add(close);
+		close.addActionListener(new ActionListener()
+		{
+
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		
+		});
+		
+		
+		frame.add(menubar);
+	}
+
+
+	private void createMainFrame() {
 		// TODO Auto-generated method stub
 		final File flist[]=File.listRoots();
 		button=new JButton[flist.length];
@@ -79,8 +142,9 @@ public class CFrame implements WindowListener
 	}
 
 
-	void createFrame(final File[] newList) //create frame of thefile list given
+	void createFrame(final File[] newList) 
 	{
+		(new SortBy()).sort(newList,2);
 		addBackButton();
 		path=newList[0].getParent();
 		System.out.println(path);
@@ -136,8 +200,7 @@ public class CFrame implements WindowListener
 	}
 
 
-	private void addBackButton() 	//ads back button
-	{
+	private void addBackButton() {
 		final JButton back=new JButton("BACK");
 		back.setBounds(30, 40, 80, 30);
 		
@@ -171,8 +234,7 @@ public class CFrame implements WindowListener
 	}
 
 
-	void removeComponent(String parent) 	//removes component fron older frames
-	{
+	void removeComponent(String parent) {
 		// TODO Auto-generated method stub
 		File temp=new File(parent);
 		//temp=new File(temp.getParent());
