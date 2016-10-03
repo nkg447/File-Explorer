@@ -27,7 +27,7 @@ public class CFrame implements WindowListener
 		File flist[]=(new File(path)).listFiles();
 		button=new JButton[flist.length];
 		createMenuBar();
-		createFrame(flist);
+		createFrame(new File(path),3);
 		frame.setVisible(true);
 	}
 	
@@ -98,6 +98,17 @@ public class CFrame implements WindowListener
 			}
 		
 		});
+		JMenu sortBy=new JMenu("Sort By");
+		JMenuItem bydate=new JMenuItem("date");
+		JMenuItem byname=new JMenuItem("name");
+		JMenuItem bysize=new JMenuItem("size");
+		sortBy.add(byname);
+		sortBy.add(bydate);
+		sortBy.add(bysize);
+		byname.addActionListener(defaultHandler);
+		bydate.addActionListener(defaultHandler);
+		bysize.addActionListener(defaultHandler);
+		view.add(sortBy);
 		
 		
 		frame.add(menubar);
@@ -122,9 +133,8 @@ public class CFrame implements WindowListener
 
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					File newList[]=flist[indx].listFiles();
 					removeComponent(frame);
-					createFrame(newList);
+					createFrame(flist[indx],3);
 				}
 				private void removeComponent(JFrame frame) {
 					// TODO Auto-generated method stub
@@ -142,9 +152,10 @@ public class CFrame implements WindowListener
 	}
 
 
-	void createFrame(final File[] newList) 
+	void createFrame(File dir,int mode) 
 	{
-		(new SortBy()).sort(newList,2);
+		final File newList[]=dir.listFiles();
+		(new SortBy()).sort(newList,mode);
 		addBackButton();
 		path=newList[0].getParent();
 		System.out.println(path);
@@ -182,9 +193,8 @@ public class CFrame implements WindowListener
 						// TODO Auto-generated method stub
 						System.out.println(path);
 						
-						File flist[]=newList[indx].listFiles();
 						removeComponent(path);
-						createFrame(flist);
+						createFrame(newList[indx],3);
 					}
 					
 				});
@@ -221,9 +231,8 @@ public class CFrame implements WindowListener
 					
 					File parentDir=new File(path);
 					parentDir=new File(parentDir.getParent());
-					File flist[]=parentDir.listFiles();
 					removeComponent(path);
-					createFrame(flist);
+					createFrame(parentDir,3);
 				}
 				
 			}
@@ -291,4 +300,25 @@ public class CFrame implements WindowListener
 
 		desktop.open(new File(targetFilePath));
 	}
+	
+	ActionListener defaultHandler = new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	      if(e.getActionCommand().equals("name"))
+	      {
+	    	  removeComponent(path);
+	    	  createFrame(new File(path),3);
+	      }
+	      else if(e.getActionCommand().equals("date"))
+	      {
+	    	  removeComponent(path);
+	    	  createFrame(new File(path),1);
+	      }
+	      else if(e.getActionCommand().equals("size"))
+	      {
+	    	  removeComponent(path);
+	    	  createFrame(new File(path),2);
+	      }
+	     
+	    }
+	  };
 }
