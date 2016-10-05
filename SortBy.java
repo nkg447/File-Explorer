@@ -1,7 +1,7 @@
 import java.io.File;
 
 
-public class SortBy 
+public class SortBy
 {
 	void sort(File list[],int mode)
 	{

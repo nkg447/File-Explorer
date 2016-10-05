@@ -1,13 +1,6 @@
 import java.awt.Desktop;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.File;
-import java.io.IOException;
-
+import java.awt.event.*;
+import java.io.*;
 import javax.swing.*;
 
 
@@ -24,9 +17,7 @@ public class CFrame implements WindowListener
 		frame.setLayout(null);
 		frame.setSize(1500, 700);
 		frame.setName(path);
-		File flist[]=(new File(path)).listFiles();
-		button=new JButton[flist.length];
-		createMenuBar();
+		//createMenuBar();
 		createFrame(new File(path),3);
 		frame.setVisible(true);
 	}
@@ -38,82 +29,14 @@ public class CFrame implements WindowListener
 		frame.setName("This PC");
 		frame.setLayout(null);
 		frame.setSize(1500, 700);
-		createMenuBar();
+
 		
 		createMainFrame();
 		frame.setVisible(true);
 	}
 	
 	
-	private void createMenuBar() 
-	{
-		// TODO Auto-generated method stub
-		JMenuBar menubar=new JMenuBar();
-		menubar.setBounds(0, 0, 1500, 30);
-		JMenu file=new JMenu("File");
-		menubar.add(file);
-		JMenu view=new JMenu("View");
-		menubar.add(view);
-		
-		JMenuItem openInNew=new JMenuItem("Open in new Frame");
-		file.add(openInNew);
-		openInNew.addActionListener(new ActionListener()
-		{
-
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				// TODO Auto-generated method stub
-				new CFrame(path);
-			}
-		
-		});
-		
-		JMenuItem cmd=new JMenuItem("Open cmd here");
-		file.add(cmd);
-		cmd.addActionListener(new ActionListener()
-		{
-
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				// TODO Auto-generated method stub
-				try {
-					rt.exec("cmd.exe /c start", null, (new File(path)));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		
-		});
-		
-		JMenuItem close=new JMenuItem("close");
-		file.add(close);
-		close.addActionListener(new ActionListener()
-		{
-
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				// TODO Auto-generated method stub
-				System.exit(0);
-			}
-		
-		});
-		JMenu sortBy=new JMenu("Sort By");
-		JMenuItem bydate=new JMenuItem("date");
-		JMenuItem byname=new JMenuItem("name");
-		JMenuItem bysize=new JMenuItem("size");
-		sortBy.add(byname);
-		sortBy.add(bydate);
-		sortBy.add(bysize);
-		byname.addActionListener(defaultHandler);
-		bydate.addActionListener(defaultHandler);
-		bysize.addActionListener(defaultHandler);
-		view.add(sortBy);
-		
-		
-		frame.add(menubar);
-	}
-
+	
 
 	private void createMainFrame() {
 		// TODO Auto-generated method stub
