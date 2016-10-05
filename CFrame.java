@@ -25,11 +25,12 @@ public class CFrame implements WindowListener
 	
 	public CFrame() {
 		// TODO Auto-generated constructor stub
+		
 		path="";
 		frame.setName("This PC");
 		frame.setLayout(null);
 		frame.setSize(1500, 700);
-
+		
 		
 		createMainFrame();
 		frame.setVisible(true);

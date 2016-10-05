@@ -18,6 +18,7 @@ public class MenuBar extends CFrame
 	public MenuBar() {
 		// TODO Auto-generated constructor stub
 		addMenuBar();
+		(new SearchField(frame)).addSearchField();
 	}
 	MenuBar(String loc)
 	{
