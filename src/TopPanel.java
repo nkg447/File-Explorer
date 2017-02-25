@@ -19,7 +19,6 @@ public class TopPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				OuterFrame.path = (new File(OuterFrame.path).getParent());
 				OuterFrame.rePaintFrame();
 			}
