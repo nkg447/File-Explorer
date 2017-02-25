@@ -7,4 +7,5 @@ To download the software [click here](https://drive.google.com/file/d/0B16zR0Sm3
   * the software is currently available for only windows
 
 The Discussions are done in Slack Team
-  to get invitation to the team drop an email to <a name="name"></a>Nikunj Gupta<nikunj.gupta447@gmail.com>
+  to get invitation to the team drop an email to
+  <a name="name"></a>Nikunj Gupta @ <nikunj.gupta447@gmail.com>
