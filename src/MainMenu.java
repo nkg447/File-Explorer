@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,7 @@ public class MainMenu implements ActionListener {
 	JMenuBar getMenu() {
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 900, 20);
+		menuBar.setBackground(new Color(233, 224, 224));
 		JMenu file = new JMenu("File");
 		JMenuItem cmd = new JMenuItem("Open in cmd");
 		JMenuItem newWindow = new JMenuItem("Open in New Window");
@@ -26,17 +28,11 @@ public class MainMenu implements ActionListener {
 
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand() == "close")
 			System.exit(0);
 
 	}
-
 
 }

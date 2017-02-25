@@ -1,24 +1,28 @@
-import java.awt.GridLayout;import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.IOException;
+import java.awt.Dimension;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class prac {
 
-	public static void main(String args[])
-	{
-		
-		
-		Runtime rt = Runtime.getRuntime();
-		try {
-			String s="E:/Multimedia/Sherlock/\"Sherlock S0.ico\"";
-			rt.exec(s);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
+    public static void main(String... args) {
+        JFrame frame = new JFrame();
+        JPanel panel = new JPanel();
+        for (int i = 0; i < 1; i++) {
+            panel.add(new JButton("Hello-" + i));
+        }
+        JScrollPane scrollPane = new JScrollPane(panel);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane.setBounds(50, 30, 300, 50);
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(500, 400));
+        contentPane.add(scrollPane);
+        frame.setContentPane(contentPane);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
+    }
 }
