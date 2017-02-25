@@ -30,11 +30,16 @@ public class OuterFrame {
 	}
 
 	static void rePaintFrame() {
-		OuterFrame.outer.remove(OuterFrame.mainPanel);
-		OuterFrame.outer.remove(OuterFrame.topPanel);
-		OuterFrame.outer.add(OuterFrame.topPanel = new TopPanel().getTopPanel());
-		OuterFrame.outer.add(OuterFrame.mainPanel = new MainPanel().getMainPanel());
-		OuterFrame.mainPanel.repaint();
+		try {
+			OuterFrame.outer.remove(OuterFrame.mainPanel);
+			OuterFrame.outer.remove(OuterFrame.topPanel);
+			OuterFrame.outer.add(OuterFrame.topPanel = new TopPanel().getTopPanel());
+			OuterFrame.outer.add(OuterFrame.mainPanel = new MainPanel().getMainPanel());
+			OuterFrame.mainPanel.repaint();
+		} catch (NullPointerException e) {
+			path = "ThisPc";
+			rePaintFrame();
+		}
 	}
 
 }
