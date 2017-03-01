@@ -10,6 +10,6 @@ The Discussions are done in Slack Team
   to get invitation to the team drop an email to
   <a name="name"></a>Nikunj Gupta @ <nikunj.gupta447@gmail.com>
 
-Some prerequisite required is a bsic knowledge of - 
-  * java.swing API
+Some prerequisite required is a basic knowledge of - 
+  * javax.swing API
   * java.io.File API
