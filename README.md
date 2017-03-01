@@ -11,5 +11,5 @@ The Discussions are done in Slack Team
   <a name="name"></a>Nikunj Gupta @ <nikunj.gupta447@gmail.com>
 
 Some prerequisite required is a basic knowledge of - 
-  * javax.swing API
-  * java.io.File API
+  * [javax.swing](https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html) API
+  * [java.io.File](https://docs.oracle.com/javase/7/docs/api/java/io/File.html) API
