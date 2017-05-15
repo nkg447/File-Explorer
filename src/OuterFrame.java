@@ -20,7 +20,7 @@ public class OuterFrame {
 	}
 
 	public static void main(String[] args) {
-		path = "ThisPc";
+		path ="ThisPc";
 		outer = new JFrame("File Manager");
 		outer.setLayout(null);
 		outer.setSize(920, 670);
