@@ -1,5 +1,5 @@
 # File-Manager
-It is a File Manger for windows which user java JFrames.
+It is a File Explorer for windows which user java JFrames.
 
 To download the software [click here](https://drive.google.com/uc?export=download&id=0B16zR0Sm3nlbNGxsR185bDluNlE)
   The link contains a jar file that can directly be executed if you have jre installed in your system.
